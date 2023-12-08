@@ -50,9 +50,10 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addProductModal" style="cursor: pointer;">Add Product</a></li>
                         <li><a class="dropdown-item display-none">Show Products List</a></li>
-                        <li><a class="dropdown-item" id="removeAll">Delete All Stored Products</a></li>
+                        <li><a class="dropdown-item text-danger" id="removeAll">Delete All Stored Products</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" id="addPreset">Add Preset Products</a></li>
-                        <li><a class="dropdown-item" id="btnDisplay" style="display: none;">iterateStorage();</a></li>
+                        <li><a class="dropdown-item display-none" id="btnDisplay">iterateStorage();</a></li>
                     </ul>
                 </div>
                   
@@ -80,40 +81,43 @@
 
     <!--main-content-->
     <div class="container-lg my-4">
-        
-        <div class="row row-cols-lg-3 gy-4" id="productsRow">
+        <div class="row text-center" id="noproducts">
+            <h1 class="mt-lg-3">There are no products yet.</h1>
+            <p>You can add a product in the <span class="text-success fw-bold">Product</span> section on the navbar</p>
+        </div>
 
-            <template id="cardTemplate">
-                <div class="col">
-                    <div class="card">
-                        <img class="card-img-top" alt="Image did not load 🥲" src="placeholder.png">
-                        <div class="card-body">
-                            <h4 class="card-title">Product Name</h4>
-                            <p class="card-text">
-                                Product Description
-                            </p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="hstack gap-3">
-                                <span>Price:</span>
-                                <span class="badge text-bg-dark font-monospace card-price">₱0000</span>
-                                <a href="" class="btn btn-outline-success ms-auto">Add to cart</a>
-                                <a href="" class="btn btn-outline-primary heart">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </template>
-
-            <div class="col" id="dummyProduct">
+        <template id="cardTemplate">
+            <div class="col">
                 <div class="card">
                     <img class="card-img-top" alt="Image did not load 🥲" src="placeholder.png">
                     <div class="card-body">
                         <h4 class="card-title">Product Name</h4>
                         <p class="card-text">
-                            This is a dummy product. This will be deleted when there are proper products stored in the localStorage.
+                            Product Description
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="hstack gap-3">
+                            <span>Price:</span>
+                            <span class="badge text-bg-dark font-monospace card-price">₱0000</span>
+                            <a href="" class="btn btn-outline-success ms-auto">Add to cart</a>
+                            <a href="" class="btn btn-outline-primary heart">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <div class="row row-cols-lg-3 gy-4" id="productsRow">
+
+            <div class="col display-none" id="dummyProduct">
+                <div class="card">
+                    <img class="card-img-top" alt="Image did not load 🥲" src="placeholder.png">
+                    <div class="card-body">
+                        <h4 class="card-title">Product Name</h4>
+                        <p class="card-text">
+                            This is a dummy product.
                             <br><br>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus rerum est praesentium excepturi harum reprehenderit eaque. Soluta porro ex dolores, numquam sapiente at atque tenetur tempore temporibus, voluptate, dolor autem!
                         </p>

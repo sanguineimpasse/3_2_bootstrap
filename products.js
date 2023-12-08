@@ -70,7 +70,7 @@ btnAddProduct.onclick = ()=>{
                     } 
                 }
                 console.log(`product: ${products} - added`);
-                location.reload();
+                reloadComponents();
             };
     
             reader.readAsDataURL(file);
@@ -80,11 +80,13 @@ btnAddProduct.onclick = ()=>{
 
 btnNuke.onclick = ()=>{
     localStorage.removeItem('products');
-    location.reload();
+    reloadComponents();
+    let warnNoProduct = document.querySelector('#noproducts');
+    warnNoProduct.style.display = 'flex';
 }
 
 btnDisplay.onclick = ()=> {
-    iterateStorage();
+    reloadComponents();
 };
 
 //run this in webpage load
@@ -92,10 +94,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     iterateStorage();
 });
 
+function reloadComponents(){
+    removeLoadedComponents();
+    iterateStorage();
+}
+
 function iterateStorage(){
     let product = localStorage.getItem('products')!=null;
+    let warnNoProduct = document.querySelector('#noproducts');
     if(product){
-        document.querySelector('#dummyProduct').style.display = 'none';
+        warnNoProduct.style.display = 'none';
         let product = localStorage.getItem('products');
         product = JSON.parse(product);
         let length = product.length;
@@ -104,6 +112,11 @@ function iterateStorage(){
             createComponent(product[i].name,product[i].desc,product[i].price,product[i].image);
         }
     }
+}
+
+function removeLoadedComponents() {
+    var container = document.querySelector('#productsRow');
+    container.innerHTML = ''; // Remove all child elements
 }
 
 function createComponent(name, desc, price, image) {
