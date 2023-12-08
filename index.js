@@ -149,7 +149,7 @@ function login(email, password){
 
     users = JSON.parse(users);
     let userIndex = users.findIndex((u)=>{
-        return u.email == email && u.password == password;
+        return u.email == email || u.username == email && u.password == password;
     });
     console.log(userIndex);
     if (userIndex == -1) return alert(`Email or password is invalid.`);
