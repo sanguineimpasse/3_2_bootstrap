@@ -60,10 +60,13 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form novalidate>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp">
+                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp validationEmail">      
+                                <div id="validationEmail" class="invalid-feedback">
+                                    Enter a valid email.
+                                </div>                      
                                 <div id="emailHelp" class="form-text">
                                     We'll never share your email with anyone else.
                                 </div>  
@@ -71,20 +74,29 @@
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="registerUsername" aria-describedby="usernameHelp">
+                                <div id="validationEmail" class="invalid-feedback">
+                                    Enter a username.
+                                </div>    
                                 <div id="usernameHelp" class="form-text">
-                                    Please refrain from using you real name.
+                                    We are highly discouraging you from using your real name.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="registerPassword" aria-describedby="passwordHelp">
+                                <input type="password" class="form-control" id="registerPassword" aria-describedby="validationPassword">
+                                <div id="validationPassword" class="invalid-feedback">
+                                    Passwords must match.
+                                </div>                            
                                 <div id="passwordHelp" class="form-text">
                                     Please use a password between 8-65535 characters, mixed with symbols, and numbers.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="confirmPass" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPass" aria-describedby="confirmHelp">
+                                <input type="password" class="form-control" id="confirmPass" aria-describedby="validationConfirmPass">
+                                <div id="validationConfirmPass" class="invalid-feedback">
+                                    Passwords must match.
+                                </div>
                                 <div id="confirmHelp" class="form-text">Please confirm your password.</div>
                               </div>
                             <div class="mb-3">
@@ -97,6 +109,9 @@
                                     <option value="min">Mindanao</option>
                                     <option value="int">Overseas</option>
                                 </select>
+                                <div id="validationProvince" class="invalid-feedback">
+                                    You must agree to our terms and services 🤬
+                                </div> 
                                 <div id="provinceHelp" class="form-text">
                                     Please select the province you're currently living in.
                                 </div>
@@ -106,6 +121,9 @@
                                 <label class="form-check-label" for="agree">
                                     Agree to all the <span><a href="https://www.icrc.org/en/doc/war-and-law/treaties-customary-law/geneva-conventions/overview-geneva-conventions.htm">Terms and Conditions</a></span>
                                 </label>
+                                <div id="validationCheckbox" class="invalid-feedback">
+                                    You must agree to our terms and services 🤬
+                                </div>   
                             </div>
                             <button type="button" class="btn btn-success w-100" id="btnRegister">Register</button>
                         </form>

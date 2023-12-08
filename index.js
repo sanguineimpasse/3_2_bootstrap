@@ -4,15 +4,26 @@ let txtPassword = document.querySelector('#registerPassword');
 let txtConfirm = document.querySelector('#confirmPass');
 
 txtPassword.addEventListener('change', ()=>{
-    if (password != confirmPass){
-
-    }
+    passwordsMatch();
 });
 txtConfirm.addEventListener('change', ()=>{
-    if (password != confirmPass){
-        
-    }
+    passwordsMatch();
 });
+
+function passwordsMatch(){
+    let password = document.querySelector('#registerPassword').value;
+    let confirmPass = document.querySelector('#confirmPass').value;
+    if (password != confirmPass){
+        txtPassword.classList.add("is-invalid");
+        txtConfirm.classList.add("is-invalid");
+    }else if(password == confirmPass){
+        console.log('passwords are matching.');
+        txtPassword.classList.remove("is-invalid");
+        txtConfirm.classList.remove("is-invalid");
+        txtPassword.classList.add("is-valid");
+        txtConfirm.classList.add("is-valid");
+    }
+}
 
 btnRegister.onclick = ()=>{
     let email = document.querySelector('#registerEmail').value;
