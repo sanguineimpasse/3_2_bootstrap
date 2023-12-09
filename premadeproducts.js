@@ -1,9 +1,16 @@
 let btnAddPreset = document.querySelector('#addPreset');
-
+var count = 1;
 btnAddPreset.onclick = ()=>{
-    addPresets(p1);
-    addPresets(p2);
-    addPresets(p3);
+    let presetCheck = localStorage.getItem('presetexist')!=null;
+    console.log(presetCheck);
+    if(!presetCheck){
+        addPresets(p1);
+        addPresets(p2);
+        addPresets(p3);
+        localStorage.setItem('presetexist','true');
+    }
+    count = 0;
+    reloadComponents();
 };
 
 function addPresets(toAdd){
@@ -19,9 +26,9 @@ function addPresets(toAdd){
     }
 
     //store to local store
-    console.log(`product: ${products} - added`);
+    console.log(`Preset product ${count} added`);
     localStorage.setItem('products', JSON.stringify(products));
-    location.reload();
+    count += 1;
 }
 
 let format = {
