@@ -89,7 +89,6 @@ btnNuke.onclick = ()=>{
     reloadComponents();
     let warnNoProduct = document.querySelector('#noproducts');
     warnNoProduct.style.display = 'flex';
-    hideEdit();
 }
 
 btnDisplay.onclick = ()=> {
@@ -107,21 +106,24 @@ btnEditProducts.onclick = ()=>{
 };
 var editModeContainer = document.querySelector('#editingMode');
 var editContainer = document.getElementsByClassName('edit-product');
+var showProductsContainer = document.querySelector('#productsRow');
 function showEdit(){
-    for (var i = 0; i < editContainer.length; i++) {
+    for (let i = 0; i < editContainer.length; i++) {
         editContainer[i].style.display = 'flex';
     }
     let products = localStorage.getItem('products')!=null;
     if(products){
         editModeContainer.style.display = 'flex';
+        showProductsContainer.classList.add("bg-success-subtle");
     }
     isShown = true;
 }
 function hideEdit(){
-    for (var i = 0; i < editContainer.length; i++) {
+    for (let i = 0; i < editContainer.length; i++) {
         editContainer[i].style.display = 'none';
     }
     editModeContainer.style.display = 'none';
+    showProductsContainer.classList.remove("bg-success-subtle");
     isShown = false;
 }
 
@@ -133,6 +135,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function reloadComponents(){
     removeLoadedComponents();
     iterateStorage();
+    if(isShown){
+        showEdit();
+    }
 }
 
 function iterateStorage(){
@@ -147,11 +152,14 @@ function iterateStorage(){
         for(let i = 0; i<length; i++){
             createComponent(product[i].name,product[i].desc,product[i].price,product[i].image,i);
         }
+    }else{
+        warnNoProduct.style.display = 'flex';
+        hideEdit();
     }
 }
 
 function removeLoadedComponents() {
-    var container = document.querySelector('#productsRow');
+    let container = document.querySelector('#productsRow');
     container.innerHTML = ''; //make the current elements go poof :D
 }
 
@@ -259,3 +267,29 @@ function editProduct(){
         }
     }
 }
+
+let btnLogout = document.querySelector('#btnLogout');
+btnLogout.onclick = ()=>{
+    location.assign('index.html')
+};
+
+let btnDeleteProduct = document.querySelector('#btnDeleteProduct');
+btnDeleteProduct.onclick = ()=>{
+    //console.log(editID);
+    //editID = editID +1;
+    let product = localStorage.getItem('products');
+    product = JSON.parse(product);
+    let length = product.length;
+    if(length==1){
+        localStorage.removeItem('products');
+        reloadComponents();
+    }
+    else{
+        console.log(`before splice ${product}`);
+        product.splice(editID,editID);
+        console.log(product);
+        localStorage.setItem('products',JSON.stringify(product));
+        reloadComponents();
+    }
+    
+};

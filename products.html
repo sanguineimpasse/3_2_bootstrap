@@ -74,7 +74,7 @@
                         <ul class="dropdown-menu dropdown-menu">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" id="btnLogout">Logout</a></li>
+                        <li><a class="dropdown-item" id="btnLogout" >Logout</a></li>
                         </ul>
                     </li>
                     </ul>
@@ -92,8 +92,8 @@
             <h1 class="mt-lg-3">There are no products yet.</h1>
             <p>You can add a product in the <span class="text-success fw-bold">Product</span> section on the navbar</p>
         </div>
-        <div class="row text-center" id="editingMode">
-            <h1 class="mt-lg-3 text-success">You are now editing</h1>
+        <div class="row text-center my-4" id="editingMode">
+            <h1 class="text-success">You are now editing</h1>
             <p class="text-success">You can edit the products posted here.</p>
         </div>
 
@@ -120,37 +120,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid edit-product">
-                <a class="btn btn-success my-2 w-100 edit-button">Edit this Product</a>
+                <div class="container-fluid edit-product">
+                    <a class="btn btn-success my-2 w-100 edit-button">Edit this Product</a>
+                </div>
             </div>
         </template>
         
-        <div class="row row-cols-lg-3 gy-4" id="productsRow">
-
-            <div class="col display-none" id="dummyProduct">
-                <div class="card">
-                    <img class="card-img-top" alt="Image did not load 🥲" src="placeholder.png">
-                    <div class="card-body">
-                        <h4 class="card-title">Product Name</h4>
-                        <p class="card-text">
-                            This is a dummy product.
-                            <br><br>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus rerum est praesentium excepturi harum reprehenderit eaque. Soluta porro ex dolores, numquam sapiente at atque tenetur tempore temporibus, voluptate, dolor autem!
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="hstack gap-3">
-                            <span>Price:</span>
-                            <span class="badge text-bg-dark font-monospace">₱0000</span>
-                            <a href="" class="btn btn-outline-success ms-auto">Add to cart</a>
-                            <a href="" class="btn btn-outline-primary heart">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!--Main products display-->
+        <div class="row row-cols-lg-3 gy-4" id="productsRow" style="border-radius: 8px;">
 
             
         </div><!--Row end-->
@@ -219,12 +196,13 @@
                     <div class="my-3">
                         <label for="newProductImage" class="form-label">Product Image</label>
                         <input class="form-control" type="file" id="editProductImage" accept="image/*">
-                        <button type="button"  class="btn btn-sm btn-danger my-2" id="removeImage">Remove Image</button>
+                        <button type="button" class="btn btn-sm btn-danger my-2" id="removeImage">Remove Image</button>
                     </div>
                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnDeleteProduct" class="btn btn-danger" data-bs-dismiss="modal">Delete Product</button>
                     <button type="button" class="btn btn-primary" id="btnSaveEdit">Save Changes</button>
                 </div>
             </div>
