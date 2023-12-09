@@ -89,6 +89,7 @@ btnNuke.onclick = ()=>{
     reloadComponents();
     let warnNoProduct = document.querySelector('#noproducts');
     warnNoProduct.style.display = 'flex';
+    hideEdit();
 }
 
 btnDisplay.onclick = ()=> {
@@ -132,7 +133,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function reloadComponents(){
     removeLoadedComponents();
     iterateStorage();
-    hideEdit();
 }
 
 function iterateStorage(){
